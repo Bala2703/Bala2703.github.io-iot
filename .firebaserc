@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "internet-of-things-bit": {
+      "hosting": {
+        "IoT": [
+          "internet-of-things-bit"
+        ]
+      }
+    }
+  }
+}
