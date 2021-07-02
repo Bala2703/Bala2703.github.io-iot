@@ -1,0 +1,69 @@
+  <mat-toolbar style="background-color:#161625;color: aliceblue;">
+    <a  mat-button href=""style="background-color:#161625;color: aliceblue;" routerLink="/welcome">
+       INTERNET OF THINGS
+    </a>
+    
+  
+    <div class="home">
+      <a mat-button class="home" style="background-color:#161625;color: aliceblue;"
+       routerLink="/welcome">
+       HOME
+      </a>
+      <a mat-button class="login" style="background-color:#161625;color: aliceblue;"
+       routerLink="/dashboard">
+        DASHBOARD
+      </a>
+      
+  
+    </div>
+  </mat-toolbar>
+  
+
+
+<div class="body">
+  <div class="container">
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+      <div fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let event of Event">
+        <mat-card class="card" aTilt >
+          <mat-card-content>
+            <h2 style="color: rgb(216, 216, 250);"> Events</h2>
+                <h3> EventName : {{event.payload.doc.data().name }}</h3>
+                <h3>Date : {{event.payload.doc.data().date }}</h3>
+                <p>Description : {{event.payload.doc.data().description }}</p>
+                <a  href="{{event.payload.doc.data().link}}" (click)="onSelect()" 
+             >Register Link
+          </a>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <!-- <div class=".card" data-tilt data-tilt-max="50" data-tilt-speed="400" data-tilt-perspective="500"></div>
+
+
+<script>
+  vanillaTilt.init(document.querySelector("mat-card"),
+  {
+    max:25,
+    speed:400
+  })
+</script> -->
+
+
+<!-- <body>
+    
+    <div class="container">
+     <mat-card class="card">
+       <mat-card-content class="content">
+        <h2>01</h2>
+        <h3>card one</h3>
+        <p>hi I'm BalaKumar. I'm currenty study in web Devlopment
+          hi I'm BalaKumar. I'm currenty study in web Devlopment
+        </p>
+        <a href="#">Read More</a>
+       </mat-card-content>
+     </mat-card>
+    </div> 
+</body> -->

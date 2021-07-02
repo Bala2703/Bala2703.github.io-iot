@@ -1,5 +1,138 @@
+<!-- <mat-toolbar style="background-color:#161625;color: aliceblue;">
+  <span>INTERNET OF THINGS</span>
+
+  <div class="home">
+    <a mat-flat-button class="home" style="background-color:#161625;color: aliceblue;" routerLink="/welcome">
+      HOME
+    </a>
+    <a mat-flat-button class="login" style="background-color:#161625;color: aliceblue;" routerLink="/dashboard">
+      LOGIN
+    </a>
+
+  </div>
+
+</mat-toolbar> -->
+
+
+
+<mat-toolbar style="background-color:#161625;color: aliceblue;">
+  <a  mat-flat-button href=""style="background-color:#161625;color: aliceblue;" routerLink="/home">
+     INTERNET &nbsp;  OF &nbsp; THINGS
+  </a>
+  <!-- <button color="primary" mat-flat-button routerLink="/news">DASHBOARD</button> -->
+
+  <div class="home">
+    <a mat-flat-button class="home" style="background-color:#161625;color: aliceblue;"
+     routerLink="/welcome">
+     HOME
+    </a>
+    <a mat-flat-button class="login" style="background-color:#161625;color: aliceblue;"
+     routerLink="/dashboard">
+      DASHBOARD
+    </a>
+    <!-- <a type="submit" mat-raised-button routerLink="/register"color="primary" >Add New User</a> -->
+
+  </div>
+</mat-toolbar>
+
+
 <div *ngIf="auth.user$ | async; then authenticated else guest">
-    <!-- template will replace this div -->
+</div>
+
+<div class="container">
+  <div class="row justify-content-center p-4">
+
+    <div class="col-md-6">
+      <ng-template #guest>
+        <h3>LOGIN</h3>
+
+        <div class="form-group p-2">
+          <input type="email" name="email" class="form-control" placeholder="Enter email Id" #userName required>
+        </div>
+        <div class="form-group p-2">
+          <input type="password" name="password" class="form-control" placeholder="Enter Password" #userPassword
+            required>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="space-between ">
+          <div class="form-group p-2">
+            <input type="button" class="btn btn-primary btn-block" value="Sign in"
+              (click)="auth.SignIn(userName.value, userPassword.value)">
+          </div>
+        </div>
+
+          <!-- <div class="form-group p-2">
+        <div class="register"><button mat-raised-button routerLink="/register">New User Register</button></div>
+    
+      </div> -->
+      <div class="form-group p-2">
+          <div class="forgotPassword">
+            <a routerLink="/forgot-password">Forgot Password?</a>
+          </div>
+
+
+          <div class="redirectToLogin">
+            <span>Not registered yet?<a class="redirect" routerLink="/sign-up"> Register</a></span>
+          </div>
+        </div>
+      
+      </ng-template>
+
+
+
+
+
+
+
+      <ng-template #authenticated>
+        <div *ngIf="auth.user$ | async as user">
+
+          <p>UID: {{ user.uid }}</p>
+          <p>Email : {{user.email}}</p>
+          <button (click)="auth.signOut()" class="button">Logout</button>
+
+          <hr>
+
+          Subscriber:
+          <span class="tag" [class.is-success]="user.roles?.subscriber">
+            {{ user.roles?.subscriber }}
+          </span><br>
+
+          Editor:
+          <span class="tag" [class.is-success]="user.roles?.editor">
+            {{ user.roles?.editor }}
+          </span><br>
+
+          Admin:
+          <span class="tag" [class.is-success]="user.roles?.admin">
+            {{ user.roles?.admin }}
+          </span><br>
+
+
+
+          <a class="button is-dark" routerLink="/secret">
+            Super Secret Page
+          </a>
+
+          <a class="button is-info" routerLink="/content">
+            Subscriber Page
+          </a>
+          <a class="button is-dark" routerLink="/news">
+            news
+          </a>
+
+
+        </div>
+
+
+      </ng-template>
+
+
+
+
+
+
+      <!-- <div *ngIf="auth.user$ | async; then authenticated else guest">
   </div>
 
   <hr>
@@ -11,24 +144,43 @@
   <a  class="button is-info" routerLink="/content">
    Subscriber Page
   </a>
+  <a class="button is-dark" routerLink="/news">
+    news
+  </a>
 
 
-<!-- User NOT logged in -->
 <ng-template #guest>
   <h3>Howdy, GUEST</h3>
   <p>Login to get started...</p>
+  <div class="form-group p-2">
+    <input type="email" class="form-control" placeholder="Username" #userName required>
+  </div>
+  <div class="form-group p-2">
+    <input type="password" class="form-control" placeholder="Password" #userPassword required>
+  </div>
 
-  <button (click)="auth.googleLogin()" class="button btn-social btn-google">
-    <i class="fa fa-google"></i> Connect Google
-  </button>
+  <div class="formGroup">
+    <input type="button" class="btn btn-primary btn-block" value="Sign in"
+      (click)="auth.SignIn(userName.value, userPassword.value)">
+  </div>
+
+
+  <div class="forgotPassword">
+    <a routerLink="/forgot-password">Forgot Password?</a>
+  </div>
+
+
+<div class="redirectToLogin">
+  <span>Not registered yet?<a class="redirect" routerLink="/sign-up"> Register</a></span>
+</div>
+
 </ng-template>
 
-<!-- User logged in -->
 <ng-template #authenticated>
   <div *ngIf="auth.user$ | async as user">
-    <h3>Howdy, {{ user.displayName }}</h3>
-    <!-- <img  src="assets/avatar.svg" width="50px"> -->
+  
     <p>UID: {{ user.uid }}</p>
+    <p>Email : {{user.email}}</p>
     <button (click)="auth.signOut()" class="button">Logout</button>
 
     <hr>
@@ -55,4 +207,34 @@
   
 </ng-template>
 
-<hr>
+<hr> -->
+
+
+
+
+      <!-- <mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>Login</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form class="example-form">
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+            <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+        <td><mat-form-field class="example-full-width">
+          <input matInput placeholder="Password" [(ngModel)]="password"type="password" name="password" required>
+        </mat-form-field></td>
+      </tr></table>
+    </form>
+    <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary">Login</button>
+  </mat-card-actions>
+</mat-card> -->

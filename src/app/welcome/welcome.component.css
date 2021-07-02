@@ -10,6 +10,13 @@
   }
 } */
 
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
 .header{
   top: 0;
   left: 0;
@@ -210,14 +217,19 @@ section img#mountains_front
   /* font-weight: 7800; */
   font-family: 'Akaya Kanadaka', cursive;
 }
-@media only screen and (max-width : 768) {
+@media only screen and (max-width : 768px) {
 .sec p
 {
-  font-size: 1em;
+  padding:30px ;
+  font-size: 1.3em;
   word-spacing: 10;
   /* word-break: break-all; */
   white-space: pre-wrap;
 }  
+ .name
+{
+  line-height: 1;
+}
 .col-1{
 content: ''; 
 white-space: pre-wrap; 

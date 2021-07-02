@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../service/auth.service";
+import { GoogleAuthService } from '../service/google-auth.service';
 
 @Component({
   selector: 'app-user-login',
@@ -9,8 +10,10 @@ import { AuthService } from "../service/auth.service";
 export class UserLoginComponent implements OnInit {
 
   canEdit;
-
-  constructor(public auth : AuthService) { }
+  
+  // password: string;
+  constructor(public auth : AuthService,
+    public google : GoogleAuthService) { }
 
   ngOnInit(): void {
   }

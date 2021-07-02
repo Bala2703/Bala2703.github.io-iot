@@ -1,0 +1,69 @@
+mat-toolbar {
+    justify-content: space-between;
+  }
+  
+  /* .content {
+    padding: 16px;
+  }
+  
+  .content , mat-card {
+    margin-bottom: 16px;
+  }
+  
+  .contents{
+    margin-left: 40%;
+    font: bold 14px/1.4 'Open Sans', arial, sans-serif;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.11em;
+  } */
+  
+  
+  .home:hover {
+    color: rgb(192, 192, 192);
+    cursor: default;
+  }
+  
+  
+  .home::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(192, 192, 192);
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+  }
+  .home:hover::before {
+    visibility: visible;
+    transform: scaleX(1);
+  }
+  
+  
+                                      /* LOGIN  */
+  
+  .login:hover {
+    color: rgb(192, 192, 192);
+    cursor: default;
+  }
+  
+  
+  .login::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(192, 192, 192);
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+  }
+  .login:hover::before {
+    visibility: visible;
+    transform: scaleX(1);
+  }

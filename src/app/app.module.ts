@@ -1,13 +1,22 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule,ReactiveFormsModule } from "@angular/forms";
+
 
 
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { MatFormFieldModule } from "@angular/material/form-field";
+// import { HTMLVanillaTiltElement } from "vanilla-tilt";
 
 // import { angular } from "@angular/fire/auth";
+
+import { MatCardModule } from "@angular/material/card";
+import { MatButton, MatButtonModule } from "@angular/material/button";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 import { FlexLayoutModule } from "@angular/flex-layout";
 
@@ -21,6 +30,11 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { ParallaxDirective } from './parallax.directive';
 import { MoonDirective } from './moon.directive';
 import { StarsDirective } from './stars.directive';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { NewsComponent } from './news/news.component';
+import { AngularTiltModule } from 'angular-tilt';
 
 @NgModule({
   declarations: [
@@ -31,7 +45,11 @@ import { StarsDirective } from './stars.directive';
     WelcomeComponent,
     ParallaxDirective,
     MoonDirective,
-    StarsDirective
+    StarsDirective,
+    ForgotPasswordComponent,
+    SignUpComponent,
+    VerifyEmailComponent,
+    NewsComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +58,13 @@ import { StarsDirective } from './stars.directive';
     AngularFireAuthModule,
     AngularFirestoreModule,
     BrowserAnimationsModule,
-    FlexLayoutModule
+    FlexLayoutModule,FormsModule,ReactiveFormsModule,
+    MatCardModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatFormFieldModule,
+    MatProgressSpinnerModule,
+    AngularTiltModule
   ],
   providers: [],
   bootstrap: [AppComponent]
