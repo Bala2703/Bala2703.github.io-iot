@@ -3,7 +3,9 @@ export interface User
     uid : string;
     email : string;
     displayName? : string;
-    roles : Roles
+    roles : Roles,
+    estado?: boolean;
+
  }
  export interface Roles
  {

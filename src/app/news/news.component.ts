@@ -12,17 +12,12 @@ export class NewsComponent implements OnInit {
 
   Event:any;
 
-  gridColumns = 3;
-
-
-  // userStatus=this.authService.userStatus
-  constructor(private authService: AuthService,private crudservice:CrudService,@Inject(DOCUMENT) private document:Document) {
+  gridColumns = 2;
+  constructor(public authService: AuthService,private crudservice:CrudService,@Inject(DOCUMENT) private document:Document) {
  }
   
     ngOnInit(): void {
 
-      // this.authService.userStatusChanges.subscribe(x => this.userStatus = x);
-      // console.log(this.userStatus)
     this.getEvent();
   }
 
@@ -38,7 +33,7 @@ export class NewsComponent implements OnInit {
     markevent = (data: any) => this.crudservice.updateEvent(data);
 
   toggleGridColumns() {
-    this.gridColumns = this.gridColumns === 3 ? 4 : 3;
+    this.gridColumns = this.gridColumns === 3 ? 2 : 3;
   }
   
 

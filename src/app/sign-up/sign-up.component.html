@@ -1,4 +1,4 @@
-<div class="displayTable">
+<!-- <div class="displayTable">
     <div class="displayTableCell">
   
       <div class="authBlock">
@@ -16,18 +16,42 @@
           <input type="button" class="btn btn-block btn-primary" value="Sign Up"
             (click)="auth.SignUp(userEmail.value, userPwd.value)">
         </div>
-  
-        <!-- <div class="formGroup">
-          <button type="button" class="btn btn-block btn-danger" (click)="google.googleLogin">
-            Continue with Google
-          </button>
-        </div> -->
       </div>
   
       <div class="redirectToLogin">
         <span>Already have an account? <span class="redirect" routerLink="/dashboard">Log In</span></span>
       </div>
     </div>
+  </div> -->
   
-  </div>
-  
+<body>
+  <section>
+    <div class="color"></div>
+    <div class="color"></div>
+    <div class="color"></div>
+    <div class="box" >
+      <div class="square"aTilt style="--i:0;"></div>
+      <div class="square" aTilt style="--i:1;"></div>
+      <div class="square" aTilt style="--i:2;"></div>
+      <div class="square" aTilt style="--i:3;"></div>
+      <div class="square" aTilt style="--i:4;"></div>
+      <div class="container" aTilt>
+        <div class="form" >
+          <h2>SignUp Form</h2>
+          <form> 
+            <div class="inputBox">
+              <input type="text" placeholder="Email" #userEmail required>
+            </div>
+            <div class="inputBox">
+              <input type="password" placeholder="Password" #userPwd required>
+            </div>
+            <div class="inputBox">
+              <input type="submit" value="SignUp" (click)="auth.SignUp(userEmail.value, userPwd.value)">
+            </div>
+            <p class="forget">Already have an Account ? <a routerLink="/dashboard">Sign In</a></p>
+          </form> 
+        </div>
+      </div>
+    </div>
+    </section>
+</body>

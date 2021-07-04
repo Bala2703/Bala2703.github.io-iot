@@ -17,6 +17,9 @@ import { MatCardModule } from "@angular/material/card";
 import { MatButton, MatButtonModule } from "@angular/material/button";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { MatSlideToggleModule } from "@angular/material/slide-toggle";
+import { MatMenuModule } from "@angular/material/menu";
+import { MatIconModule } from "@angular/material/icon";
 
 import { FlexLayoutModule } from "@angular/flex-layout";
 
@@ -35,6 +38,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { NewsComponent } from './news/news.component';
 import { AngularTiltModule } from 'angular-tilt';
+import { CardDirective } from './card.directive';
 
 @NgModule({
   declarations: [
@@ -49,7 +53,8 @@ import { AngularTiltModule } from 'angular-tilt';
     ForgotPasswordComponent,
     SignUpComponent,
     VerifyEmailComponent,
-    NewsComponent
+    NewsComponent,
+    CardDirective
   ],
   imports: [
     BrowserModule,
@@ -64,7 +69,10 @@ import { AngularTiltModule } from 'angular-tilt';
     MatToolbarModule,
     MatFormFieldModule,
     MatProgressSpinnerModule,
-    AngularTiltModule
+    AngularTiltModule,
+    MatSlideToggleModule,
+    MatMenuModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

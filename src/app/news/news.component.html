@@ -1,22 +1,37 @@
-  <mat-toolbar style="background-color:#161625;color: aliceblue;">
-    <a  mat-button href=""style="background-color:#161625;color: aliceblue;" routerLink="/welcome">
-       INTERNET OF THINGS
-    </a>
-    
-  
-    <div class="home">
-      <a mat-button class="home" style="background-color:#161625;color: aliceblue;"
-       routerLink="/welcome">
-       HOME
-      </a>
-      <a mat-button class="login" style="background-color:#161625;color: aliceblue;"
-       routerLink="/dashboard">
-        DASHBOARD
-      </a>
-      
-  
+  <div class="image" style="background-image: url(/assets/newsback.png);">
+  <div class="header">
+    <span routerLink="/home">
+      INTERNET OF THINGS
+    </span>
+    <div class="toggle">
+
     </div>
-  </mat-toolbar>
+    <div class="home">
+      <a  class="home" style="background-color:#161625;color: aliceblue;"
+       routerLink="/welcome">
+       Home
+      </a>
+      <a  class="login" style="background-color:#161625;color: aliceblue;"
+       routerLink="/dashboard">
+        Dashboard
+      </a>
+      <a  class="admin" style="background-color:#161625;color: aliceblue;" routerLink="/secret">
+        Admin
+      </a>
+      <a class="logout" style="background-color:#161625; color: #fff; cursor: pointer;" (click)="authService.signOut()">LogOut</a>
+      <div class="menu"> 
+      <button mat-button [matMenuTriggerFor]="beforeMenu" style="font-weight: 700;">
+        Menu
+      </button>
+<mat-menu  #beforeMenu="matMenu" xPosition="before">
+  <button style="font-weight: 700;" mat-menu-item routerLink="/welcome">Home</button>
+  <button style="font-weight: 700;" mat-menu-item routerLink="/dashboard">Dashboard</button>
+  <button style="font-weight: 700;" mat-menu-item routerLink="/secret">Admin</button>
+  <button style="font-weight: 700;" mat-menu-item (click)="authService.signOut()">LogOut</button>
+</mat-menu>
+</div>
+    </div>
+  </div>
   
 
 
@@ -26,8 +41,8 @@
       <div fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let event of Event">
         <mat-card class="card" aTilt >
           <mat-card-content>
-            <h2 style="color: rgb(216, 216, 250);"> Events</h2>
-                <h3> EventName : {{event.payload.doc.data().name }}</h3>
+            <!-- <h2> Event</h2> -->
+                <h3> Event Name : {{event.payload.doc.data().name }}</h3>
                 <h3>Date : {{event.payload.doc.data().date }}</h3>
                 <p>Description : {{event.payload.doc.data().description }}</p>
                 <a  href="{{event.payload.doc.data().link}}" (click)="onSelect()" 
@@ -39,31 +54,4 @@
     </div>
     </div>
   </div>
-
-  <!-- <div class=".card" data-tilt data-tilt-max="50" data-tilt-speed="400" data-tilt-perspective="500"></div>
-
-
-<script>
-  vanillaTilt.init(document.querySelector("mat-card"),
-  {
-    max:25,
-    speed:400
-  })
-</script> -->
-
-
-<!-- <body>
-    
-    <div class="container">
-     <mat-card class="card">
-       <mat-card-content class="content">
-        <h2>01</h2>
-        <h3>card one</h3>
-        <p>hi I'm BalaKumar. I'm currenty study in web Devlopment
-          hi I'm BalaKumar. I'm currenty study in web Devlopment
-        </p>
-        <a href="#">Read More</a>
-       </mat-card-content>
-     </mat-card>
-    </div> 
-</body> -->
+</div>

@@ -1,4 +1,4 @@
-<div class="displayTable">
+<!-- <div class="displayTable">
     <div class="displayTableCell">
   
       <div class="authBlock">
@@ -22,5 +22,19 @@
   
   
     </div>
-  </div>
+  </div> -->
   
+
+  <body>
+    <div class="box" *ngIf="auth.userState as user">
+      <span>
+        <div class="form">
+        <h2>Confirmation mail has been sent to <strong class="stronger">{{user.email}}</strong></h2>
+        <div class="inputbox">
+          <input type="submit" value="Resend Verification email"(click)="auth.SendVerificationMail()" >
+        </div>
+        <p class="login">Back to Login : <a routerLink="/dashboard">LogIn</a></p>
+      </div>
+      </span>
+    </div>
+  </body>

@@ -4,6 +4,11 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
 import { CrudService } from '../service/crud.service';
+import { Observable } from "rxjs";
+import { User } from ".././service/user.model";
+import { Domiciliario } from '../service/signup';
+// import { Switch } from '../service/switch.model';
+
 
 @Component({
   selector: 'app-super-secret',
@@ -11,6 +16,8 @@ import { CrudService } from '../service/crud.service';
   styleUrls: ['./super-secret.component.css']
 })
 export class SuperSecretComponent implements OnInit {
+  domiciliarios: Observable<Domiciliario[]>;
+
 
   Event:any;
   myArray: any[] = []
@@ -18,15 +25,25 @@ eventName!:string;
 eventDate!:string;
 eventLink!:string;
 eventDescription!:string;
+button!:string;
+// signUp! :boolean;
 message=""
+  toasterService: any;
 // Record: { name: string } = { name: ''};
   constructor(private crudservice:CrudService,
     private router : Router,
    private afu:AngularFireAuth, private firestore: AngularFirestore,private authservice:AuthService) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
       this.getEvent();
-
+      this.domiciliarios = this.authservice.getDomiciliarios()
+    return this.domiciliarios;
+  }
+  actualizarEstado(key, obj, e){
+    this.authservice.updateEstado(key, e);
+  }
+  distinctFun(item) {
+    return item.button;
   }
 
   getEvent = () =>
@@ -43,6 +60,7 @@ message=""
   Record['date'] = this.eventDate;
   Record['link'] = this.eventLink;
   Record['description'] = this.eventDescription;
+  // Record['signUp'] = this.signUp;
   this.crudservice.create_newEvent(Record).then(() =>
     {
       this.eventName = "";
@@ -58,5 +76,18 @@ message=""
     this.afu.signOut();
     this.router.navigate(['/dashboard']);
   }
+
+  
+
+//  statebtn(){
+// let state:any= {};
+// var button = (document.getElementById('state').innerHTML);
+// state['button']=this.button;
+// this.authservice.getButton().subscribe(()=>{this.button="";console.log(button)})
+// console.log['state :'+ state]
+//  }
+
+
+
 
 }

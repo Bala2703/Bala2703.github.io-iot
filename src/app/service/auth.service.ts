@@ -7,15 +7,46 @@ import 'firebase/auth'
 import {  AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore,AngularFirestoreDocument } from "@angular/fire/firestore";
 import { Router } from "@angular/router";
-import { Observable,of, observable } from "rxjs";
-import { switchMap } from "rxjs/operators";
+import { Observable,of} from "rxjs";
+import { map, switchMap } from "rxjs/operators";
 import { User } from "../service/user.model";
+import { FormGroup,FormControl } from '@angular/forms';
+// import {Switch} from "../service/switch.model"
+import { Domiciliario } from "../service/signup";
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 user$ : Observable<any>
 userState : any;
+
+
+
+domiciliarios: Observable<Domiciliario[]>;
+// estadoChange: boolean = false
+
+getDomiciliarios() {
+  this.domiciliarios = this.afs.collection('signup').snapshotChanges().pipe(map(actions => {
+    return actions.map(a => {
+      const data = a.payload.doc.data() as Domiciliario;
+      const id = a.payload.doc.id;
+      return { id, ...data };
+    });
+  })
+  );
+  return this.domiciliarios;
+}
+getButton(){
+  return this.afs.collection('signup').snapshotChanges();
+
+}
+
+updateEstado(key, button){
+  this.afs.doc('signup/' + key).update({button});
+}
+
 
   constructor(private afs : AngularFirestore,
               private afAuth : AngularFireAuth,
@@ -39,32 +70,16 @@ userState : any;
                   {
                     if(user)
                     {
-                      this.userState.setItem('user' , JSON.stringify(this.userState));
+                      this.userState = user;
+                      localStorage.setItem('user' , JSON.stringify(this.userState));
                       JSON.parse(localStorage.getItem('user'));
+                    }else{
+                      localStorage.setItem('user' , null);
+                      JSON.parse(localStorage.getItem('user'))
                     }
                   })
               }
 
-
-// googleLogin()
-// {
-//   return this.oAuthLogin(new firebase.auth.GoogleAuthProvider())
-// }
-// oAuthLogin(provider)
-// {
-//   return this.afAuth.signInWithPopup(provider)
-//   .then((Credential) => 
-//   {
-//     this.ngZone.run(()=> 
-//     {
-//       this.router.navigate(['/user-login'])
-//     })
-//     this.updateUserData(Credential.user)
-//   }).catch((error)=>
-//   {
-//     window.alert(error)
-//   })
-// }
 signOut()
 {
   return this.afAuth.signOut().then(() => {
@@ -72,49 +87,6 @@ signOut()
     this.router.navigate(['/dashboard']);
   })}
 
-//  updateUserData(user)
-// {
-//   const userRef : AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
-//   const data: User = {
-//     uid: user.uid,
-//     email: user.email,
-//     displayName : user.displayName,
-//     roles :{    
-//       // subscriber: true
-//     }
-//   }
-//   return userRef.set(data, { merge: true })
-// }
-
-
-// canRead(user: User): boolean {
-//   const allowed = ['admin', 'editor', 'subscriber']
-//   return this.checkAuthorization(user, allowed)
-// }
-
-// canEdit(user: User): boolean {
-//   const allowed = ['admin', 'editor']
-//   return this.checkAuthorization(user, allowed)
-// }
-
-// canDelete(user: User): boolean {
-//   const allowed = ['admin']
-//   return this.checkAuthorization(user, allowed)
-// }
-
-
-
-// // determines if user has matching role
-// private checkAuthorization(user: User, allowedRoles: string[]): boolean {
-//   if (!user) return false
-//   for (const role of allowedRoles) {
-//     if ( user.roles[role] ) {
-//       return true
-//     }
-//   }
-//   return false
-
-// }
 
 
 SignIn(email,password)
@@ -124,7 +96,7 @@ SignIn(email,password)
   {
     this.ngZone.run(()=>
     {
-      this.router.navigate(['dashboard']);
+      this.router.navigate(['/news']);
     })
     this.SetUserData(result.user);
   }).catch((error)=>
@@ -160,6 +132,11 @@ return this.afAuth.sendPasswordResetEmail(passwordResetEmail)
 })
 }
 
+get isLoggedIn(): boolean {
+  const user = JSON.parse(localStorage.getItem('user'));
+  return (user !== null && user.emailVerified !== false) ? true : false;
+}
+
 SetUserData(user) {
   const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
   const data: User = {
@@ -173,6 +150,10 @@ SetUserData(user) {
   return userRef.set(data, {
     merge: true
   })
+}
+
+get_AllRole(){
+  return this.afs.collection('users').snapshotChanges();
 }
 
 
@@ -202,6 +183,10 @@ private checkAuthorization(user: User, allowedRoles: string[]): boolean {
     }
   }
   return false
+
+}
+
+canView(){
 
 }
 

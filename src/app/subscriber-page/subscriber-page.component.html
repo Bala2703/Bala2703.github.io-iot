@@ -1,23 +1,42 @@
-<button>
-   poda 
-</button>
+   <div >
+   <!-- <p>UID: {{ user.uid }}</p> -->
+    <p>Email : {{user.email}}</p>
+    <button (click)="auth.signOut()" class="button">Logout</button>
 
-<!-- <div *ngIf="post$ | async as post">
-    <h1>{{ post.title }}</h1>
-    <p>{{ post.content }}</p>
+    <hr>
+
+    Subscriber:
+    <span class="tag" [class.is-success]="user.roles?.subscriber">
+      {{ user.roles?.subscriber }}
+    </span><br>
+
+    Editor:
+    <span class="tag" [class.is-success]="user.roles?.editor">
+      {{ user.roles?.editor }}
+    </span><br>
+
+    Admin:
+    <span class="tag" [class.is-success]="user.roles?.admin">
+      {{ user.roles?.admin }}
+    </span><br>
+
+
   
-      <button class="button is-danger" 
-              (click)="deletePost()"
-              *ngIf="auth.canDelete(user)">
-  
-      Delete Post
-    </button>
-  
-    <button class="button is-warning" 
-            (click)="editPost()"
-            *ngIf="auth.canEdit(user)">
-    
-      Edit Post
-    </button>
-  
-  </div> -->
+
+
+
+<div style="justify-content: space-between;
+align-items: center;">
+    <a class="button is-dark" routerLink="/secret">
+      Super Secret Page
+    </a><br>
+
+    <a class="button is-info" routerLink="/content">
+      Subscriber Page
+    </a><br>
+    <a class="button is-dark" routerLink="/news">
+      news
+    </a>
+
+  </div>
+</div>
