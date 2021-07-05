@@ -185,7 +185,7 @@ section img#mountains_front
 .sec{
   position: relative;
   padding: 70px;
-  background-color: #3a1d3c;
+  background:linear-gradient(160deg,#400952, #d58cf0, #d7c0df)
   
 }
 
@@ -209,15 +209,19 @@ section img#mountains_front
 .sec p
 {
   padding:50px ;
-  line-height: 1;
-  font-size: 1.3em;
+  line-height: 1.5;
+  font-size: 1.5em;
   word-spacing: 10;
-  /* word-break: break-all; */
   white-space: pre-wrap;
-}  
+}
+mat-card  ul li{
+  font-size: 0.5em;
+  line-height: 1.5;
+  color: #0e0517;
+} 
  .name
 {
-  line-height: 1;
+  line-height: 1.1;
 }
 .dashboard{
   justify-content: space-between;
