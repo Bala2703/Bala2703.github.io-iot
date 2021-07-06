@@ -15,23 +15,15 @@ export class UserLoginComponent implements OnInit {
   domiciliarios: Observable<Domiciliario[]>;
 button:string;
   canEdit;
-  
-  // password: string;
   constructor(public auth : AuthService,
     public google : GoogleAuthService) { }
 
   ngOnInit() {
     this.domiciliarios = this.auth.getDomiciliarios();
     return this.domiciliarios
-    console.log(Domiciliario)
-
-    
   }
   
   actualizarEstado(key, obj, e){
     this.authservice.updateEstado(key, e);
   }
-favbutton(item){
-
-}
 }

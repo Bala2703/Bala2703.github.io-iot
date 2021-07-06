@@ -39,7 +39,7 @@
   <div class="container">
     <div fxLayout="row wrap" fxLayoutGap="16px grid">
       <div fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let event of Event">
-        <mat-card class="card" aTilt >
+        <mat-card class="card" aTilt [tiltOptions]=tiltoptions>
           <mat-card-content>
             <!-- <h2> Event</h2> -->
                 <h3> Event Name : {{event.payload.doc.data().name }}</h3>

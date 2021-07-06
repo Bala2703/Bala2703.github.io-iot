@@ -1,6 +1,3 @@
-<!-- <mat-toolbar> -->
- 
- 
   <div class="header">
   <span routerLink="/home">
     INTERNET OF THINGS
@@ -8,11 +5,7 @@
      <a class="home" routerLink="/welcome">
       HOME
     </a>
-</div>
-<!-- </mat-toolbar> -->
-<!-- <div *ngFor="let signup of domiciliarios | async"  > -->
-  <!-- <mat-slide-toggle  #toggle [(ngModel)]="signup.button" ></mat-slide-toggle> -->
-
+  </div>
 <div class="body">
   <div class="section">
     <div class="color"></div>
@@ -38,13 +31,9 @@
               <input type="submit" value="Login" (click)="auth.SignIn(userName.value, userPassword.value)">
             </div>
             <p class="forget">Forgot Password ?  <a routerLink="/forgot-password">Click Here</a></p>
-            <div *ngFor="let signup of domiciliarios | async" >
-              <!-- <mat-slide-toggle  #toggle [(ngModel)]="signup.button" (ngModelChange)="actualizarEstado(signup.id, signup, $event)"></mat-slide-toggle> -->
-            <p class="forget" *ngIf="signup.button" >Don't have an Account ? <a   routerLink="/sign-up">SignUp</a></p>
-              </div> 
+            <p class="forget" >Don't have an Account ? <a   routerLink="/sign-up">SignUp</a></p>
           </form>
         </div>
       </div>
     </div>
   </div>
-<!-- </div> -->

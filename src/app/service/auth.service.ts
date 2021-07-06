@@ -186,9 +186,6 @@ private checkAuthorization(user: User, allowedRoles: string[]): boolean {
 
 }
 
-canView(){
-
-}
 
 
 }
